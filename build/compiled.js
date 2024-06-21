@@ -7,11 +7,11 @@
         check: async function(app, noteUUID) {
           const noteContent = await app.getNoteContent({ uuid: noteUUID });
           await this._loadScript("https://cdnjs.cloudflare.com/ajax/libs/marked/13.0.0/marked.min.js");
-          await this._loadScript("https://cdnjs.cloudflare.com/ajax/libs/cheerio/0.22.0/index.min.js");
           const html = marked.parse(noteContent);
-          const $ = cheerio.load(html);
-          console.log($.text());
-          return $.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, "text/html");
+          console.log(doc.body.textContent);
+          return doc.body.textContent || "";
         },
         run: async function(app, noteUUID) {
           await app.alert("Hemingway analyzer");
