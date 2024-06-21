@@ -15,8 +15,8 @@
       "Analyze": {
         check: async function(app, noteUUID) {
           const noteContent = await app.getNoteContent({ uuid: noteUUID });
-          console.log(import_marked.marked);
-          return noteContent;
+          const html = import_marked.marked.parse(noteContent);
+          return html;
         },
         run: async function(app, noteUUID) {
           await app.alert("Hemingway analyzer");
