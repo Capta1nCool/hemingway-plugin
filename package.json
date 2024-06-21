@@ -1,9 +1,11 @@
 {
   "dependencies": {
+    "cheerio": "1.0.0-rc.12",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "esbuild": "0.17.15",
-    "isomorphic-fetch": "^3.0.0"
+    "isomorphic-fetch": "^3.0.0",
+    "marked": "^13.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
